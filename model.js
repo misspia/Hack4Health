@@ -10,19 +10,29 @@ mongoose.connect('mongodb://localhost/hack4health');
 
 var questionSchema = new Schema({
   text:  String,
-  answers: [{ option: String }],
+  answers: [String],
   frequency: {
-    Monday: [{ time: Date}],
-    Tuesday: [{ time: Date}],
-    Wednesday: [{ time: Date}],
-    Thursday: [{ time: Date}],
-    Friday: [{ time: Date}],
-    Saturday: [{ time: Date}],
-    Sunday: [{ time: Date}]
+    // number of minutes from midnight
+    Monday: [Number],
+    Tuesday: [Number],
+    Wednesday: [Number],
+    Thursday: [Number],
+    Friday: [Number],
+    Saturday: [Number],
+    Sunday: [Number]
   }
 });
 
-mongoose.model('questions', questionSchema);
+var answerSchema = new Schema({
+  // object ID of question
+  questionID: Schema.Types.ObjectId,
+  // array index
+  answer: Number,
+  timestamp: Date
+});
+
+var Question = mongoose.model('questions', questionSchema);
+var Answer = mongoose.model('answers', answerSchema);
 
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
