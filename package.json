@@ -2,7 +2,7 @@
   "name": "hackathon",
   "version": "1.0.0",
   "description": "Hack4Health Hackathon",
-  "main": "model.js",
+  "main": "modelTest.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
