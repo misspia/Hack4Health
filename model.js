@@ -37,11 +37,18 @@ app.post('/', urlencodedParser, function(req, res) {
     });
 });
 
-app.get('/:collection', function(req, res) {
+app.get('/:collection/count', function(req, res) {
     var collection = req.params.collection;
     mongoose.model(collection).count().exec(function(err,data) {
         var body = data.toString() + " records found for collection " + collection;
         res.send(body);
+    });
+});
+
+app.get('/:collection', function(req, res) {
+    var collection = req.params.collection;
+    mongoose.model(collection).find().lean().exec(function(err,data) {
+        res.send(data);
     });
 });
 
