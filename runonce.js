@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var models = require('./schema.js');
+var Schema = mongoose.Schema;
+var ObjectId = Schema.ObjectId;
 
 mongoose.connection.collections['questions'].drop();
 mongoose.connection.collections['answers'].drop();
@@ -33,6 +35,7 @@ q1.answers.caregiver = ['Yes', 'No']
 q1.frequency.Monday.unshift(60*9);
 q1.frequency.Wednesday.unshift(60*9);
 q1.frequency.Friday.unshift(60*9);
+q1.frequency.Saturday.unshift(60*19);
 q1.profileType = "Both";
 q1.save();
 
@@ -43,5 +46,8 @@ a1.answer = "Yes";
 a1.comment = ""
 a1.timestamp = Date.now();
 a1.save(function(doc) {
-    mongoose.connection.close();
+    models.Question.findById(q1._id.toString()).exec(function(err, data) {
+        console.log(data);
+        mongoose.connection.close();
+    });
 });
