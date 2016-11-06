@@ -52,7 +52,7 @@ var getQuestion = function(dt, userID, callback) {
                     result.push(obj);
                 }
                 callback(result);
-        });
+            });
     });
 };
 
@@ -79,8 +79,16 @@ Response format:
 [{}]
 */
 var getAnswers = function(qID, userID, callback) {
-    
-}
+    models.Answer.find()
+        .where('questionID').eq(qID)
+        .where('userID').eq(userID)
+        .select('-_id answer comment timestamp')
+        .sort('timestamp')
+        .exec(function(err, data) {
+            callback(data);
+        });
+};
 
-getQuestion(new Date(), "581e6b2b56bf7e3d5b4bccbd", console.log);
-saveAnswer("581e6b2b56bf7e3d5b4bccbf", "581e6b2b56bf7e3d5b4bccbd", "Yes", "", function() {console.log("Answer saved");});
+//getQuestion(new Date(), "581e6b2b56bf7e3d5b4bccbd", console.log);
+//saveAnswer("581e6b2b56bf7e3d5b4bccbf", "581e6b2b56bf7e3d5b4bccbd", "Yes", "", function() {console.log("Answer saved");});
+getAnswers("581e6b2b56bf7e3d5b4bccbf", "581e6b2b56bf7e3d5b4bccbd", console.log)
