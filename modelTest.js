@@ -14,9 +14,10 @@ app.get('/:collection', function(req, res) {
     });
 });
 
-app.get('/getQuestion/:userid', function(req, res) {
-    var userid = req.params.userid;
-    models.getQuestion(userid, function(data) {
+app.get('/getQuestion/:first/:last', function(req, res) {
+    var first = req.params.first;
+    var last = req.params.last;
+    models.getQuestionByName(first, last, function(data) {
         res.send(data);
     });
 });

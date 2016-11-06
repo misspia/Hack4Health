@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var models = require('./schema.js');
+var models = require('./models/schema.js');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 
@@ -35,7 +35,7 @@ q1.answers.caregiver = ['Yes', 'No']
 q1.frequency.Monday.unshift(60*9);
 q1.frequency.Wednesday.unshift(60*9);
 q1.frequency.Friday.unshift(60*9);
-q1.frequency.Saturday.unshift(60*19);
+q1.frequency.Saturday.unshift(60*22);
 q1.profileType = "Both";
 q1.save();
 

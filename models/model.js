@@ -57,6 +57,32 @@ var getQuestion = function(userID, callback) {
     });
 };
 
+var getQuestionByName = function(first, last, callback) {
+    getUserId(first, last, function(data) {
+        getQuestion(data, function(data) {
+            callback(data);
+        });
+    });
+};
+
+var getUserId = function(first, last, callback) {
+    models.User.findOne()
+        .where('firstName').eq(first)
+        .where('lastName').eq(last)
+        .select('_id')
+        .exec(function(err, data) {
+            callback(data);
+        });
+};
+
+var getUser = function(id, callback) {
+    models.User.findOne()
+        .where('_id').eq(id)
+        .exec(function(err, data) {
+            callback(data);
+        });
+};
+
 /*
 Given a qID (String), userID (String), response (String) and comment (String),
 saves the response and comment to the database.
@@ -90,4 +116,4 @@ var getAnswers = function(qID, userID, callback) {
         });
 };
 
-exports.getQuestion = getQuestion;
+exports.getQuestionByName = getQuestionByName;
