@@ -18,10 +18,10 @@ u1.profileType = "Patient";
 u1.save();
 
 var u2 = new models.User();
-u2.firstName = "Bob";
-u2.lastName = "Dylan";
+u2.firstName = "Jane";
+u2.lastName = "Doe";
 u2.dob = new Date(1970, 12, 12);
-u2.gender = "Male";
+u2.gender = "Female";
 u2.joinDate = new Date(2017, 1, 1);
 u2.profileType = "Caregiver";
 u2.patientID = u1._id;
