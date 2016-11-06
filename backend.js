@@ -2,9 +2,11 @@ var mongoose = require('mongoose');
 var express = require('express');
 var cors = require('cors');
 var bodyParser = require('body-parser');
+var favicon = require('serve-favicon');
 
 var app = express();
 app.use(cors());
+app.use(favicon('./favicon.ico'));
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
