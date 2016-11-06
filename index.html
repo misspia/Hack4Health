@@ -3,8 +3,12 @@
 <head>
 	<meta name="viewport" content="width=device-width" />
 	<title>21 Questions</title>
+	<script>document.write('<base href="' + document.location + '" />');</script>
 	<link rel="stylesheet" type="text/css" href="node_modules/ionicons-npm/css/ionicons.css">
+	<!-- <link rel="stylesheet" href="node_modules/nvd3/build/nv.d3.min.css"> -->
 	<link rel="stylesheet" type="text/css" href="app/css/main.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.min.css"/> 
+	
 </head>
 <body ng-controller="mainCrtl" class = "{{profile.gender | lowercase}} ">
 	<ul id = "header-container" class = "row center">
@@ -20,13 +24,23 @@
 		</li>	
 	</ul>
 	<ul id = "main-container" class = "col center">
+
 		<ng-include ng-show = "navState == 0" src="'templates/landing.html'" id = "landing" class = "row center"></ng-include>
 		<ng-include ng-show = "navState == 1" src="'templates/questions.html'" id = "questions" class = "row center"></ng-include>
-		<ng-include ng-show = "navState == 2" src="'templates/dashboard.html'" id = "dashboard" class = "row center"></ng-include>
+		<nvd3 ng-show = "navState == 2"  id = "dashboard" class = "row center" options="options" data="data"></nvd3>
+		<!-- <ng-include ng-show = "navState == 2" src="'templates/dashboard.html'" id = "dashboard" class = "row center"></ng-include> -->
 		<ng-include ng-show = "navState == 3" src="'templates/profile.html'" id = "profile" class = "row center"></ng-include>
 	</ul>
 </body>
 	<script type="text/javascript" src = "node_modules/angular/angular.js"></script>
+	<!-- <script src="node_modules/d3/d3.js"></script>
+	<script src="node_modules/nvd3/build/nv.d3.js"></script> or use another assembly
+	<script src="node_modules/angular-nvd3/dist/angular-nvd3.js"></script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.5/angular-nvd3.min.js"></script>
+
 	<script type="text/javascript" src = "app/js/app.js"></script>
 	<script type="text/javascript" src = "app/js/controller.js"></script>
 	<script type="text/javascript" src = "app/js/services.js"></script>

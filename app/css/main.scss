@@ -207,9 +207,17 @@ answer-options{
 		}
 	}
 } 
+.nvd3 .nv-axis line{
+	stroke: transparent !important;
+}
 
-
-
+// .nvd3{
+// 	.nv-axis{
+// 		line{
+// 			stroke:none;
+// 		}
+// 	}
+// }
 
 
 

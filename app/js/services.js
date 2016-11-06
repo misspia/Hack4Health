@@ -18,21 +18,7 @@ app.factory('user', function($http){
 		}
 	};
 });
-app.factory('question', function($http){
-	return{
-		status: function(unanswered){
-			if(unanswered == 0){
-				return 'How are you feeling today?';
-			} else {
-				return 'You have ' + unanswered + ' unanswered question(s)';
-			}
-		},
-		toAnswer: function(){
-			return $http.get('http://localhost:3000/getQuestion/John/Doe');
 
-		}
-	};
-});
 app.factory('landing', function(){
 	return{
 		msg: function(name){
@@ -48,3 +34,40 @@ app.factory('landing', function(){
 
 	};
 });
+app.factory('question', function($http){
+	return{
+		status: function(unanswered){
+			if(unanswered == 0){
+				return 'How are you feeling today?';
+			} else {
+				return 'You have ' + unanswered + ' unanswered question(s)';
+			}
+		},
+		toAnswer: function(){
+			return $http.get('http://localhost:3000/getQuestion/John/Doe');
+
+		},
+		timeseries: function(){
+			return $http.get('../../timeseries.json');
+		}
+	};
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

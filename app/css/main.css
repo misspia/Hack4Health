@@ -200,5 +200,7 @@ answer-options li {
     margin: 0.4em 0; }
   #profile form {
     margin-bottom: 5em; } }
+.nvd3 .nv-axis line {
+  stroke: transparent !important; }
 
 /*# sourceMappingURL=main.css.map */
