@@ -1,60 +1,94 @@
-var express = require('express');
 var mongoose = require('mongoose');
-var bodyParser = require('body-parser')
-
-var app = express();
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
+var models = require('./schema.js');
 var Schema = mongoose.Schema;
+var ObjectId = Schema.ObjectId;
 
-mongoose.connect('mongodb://localhost/hack4health');
+var weekday = new Array(7);
+weekday[0]=  "Sunday";
+weekday[1] = "Monday";
+weekday[2] = "Tuesday";
+weekday[3] = "Wednesday";
+weekday[4] = "Thursday";
+weekday[5] = "Friday";
+weekday[6] = "Saturday";
 
-var questionSchema = new Schema({
-  text:  String,
-  answers: [{ option: String }],
-  frequency: {
-    Monday: [{ time: Date}],
-    Tuesday: [{ time: Date}],
-    Wednesday: [{ time: Date}],
-    Thursday: [{ time: Date}],
-    Friday: [{ time: Date}],
-    Saturday: [{ time: Date}],
-    Sunday: [{ time: Date}]
-  }
-});
+/*
+Given a dt (Date) and userID (String), returns an array of JSON objects containing
+all of the questions asked within the last 60 minutes, up to midnight of the same day
+Response format:
+[{ qID : String, text : String, answers : Mixed }]
+*/
+var getQuestion = function(dt, userID, callback) {
+    var dayOfWeek = weekday[dt.getDay()];
+    var then = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate(), 0, 0, 0);
+    var msSinceMidnight = dt - then.getTime();
+    var minSinceMidnight = msSinceMidnight / 60000;
 
-mongoose.model('questions', questionSchema);
-
-app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/index.html');
-});
-
-app.post('/', urlencodedParser, function(req, res) {
-    var collection = req.body.collection;
-    var field = req.body.field;
-    var value = req.body.value;
-    mongoose.model(collection).find().where(field, value).limit(10).exec(function(err,data) {
-        res.send(data);
+    var u;
+    var q;
+    models.User.findById(userID).exec(function(err, data) {
+        u = data;
+        if (u == null) {
+            callback([]);
+            return;
+        }
+        models.Question.find()
+            .where('frequency.'.concat(dayOfWeek)).gt(minSinceMidnight - 60).lt(minSinceMidnight)
+            .where('profileType').in(['Both', u.profileType])
+            .select('_id text answers')
+            .exec(function(err, data) {
+                var result = []
+                for (var i = 0; i < data.length; i++) {
+                    var obj = {}
+                    obj.qID = data[i]._id.toString();
+                    if (u.profileType == "Caregiver") {
+                        obj.text = data[i].text.caregiver;
+                        obj.answers = data[i].answers.caregiver;
+                    }
+                    else {
+                        obj.text = data[i].text.patient;
+                        obj.answers = data[i].answers.patient;
+                    }
+                    result.push(obj);
+                }
+                callback(result);
+            });
     });
-});
+};
 
-app.get('/:collection', function(req, res) {
-    var collection = req.params.collection;
-    mongoose.model(collection).count().exec(function(err,data) {
-        var body = data.toString() + " records found for collection " + collection;
-        res.send(body);
+/*
+Given a qID (String), userID (String), response (String) and comment (String),
+saves the response and comment to the database.
+*/
+var saveAnswer = function(qID, userID, response, comment, callback) {
+    var ans = new models.Answer();
+    ans.questionID = qID;
+    ans.userID = userID;
+    ans.answer = response;
+    ans.comment = comment;
+    ans.timestamp = new Date();
+    ans.save(function() {
+        callback();
     });
-});
+};
 
-app.get('/:collection/:field', function(req, res) {
-    var collection = req.params.collection;
-    var field = req.params.field;
-    mongoose.model(collection).aggregate()
-        .group({ _id: '$' + field, count: { $sum: 1 }})
-        .sort({ count: -1 })
-        .limit(20)
+/*
+Given a qID (String), userID (String), return a list of
+all saved answers for that question and user.
+Response format:
+[{}]
+*/
+var getAnswers = function(qID, userID, callback) {
+    models.Answer.find()
+        .where('questionID').eq(qID)
+        .where('userID').eq(userID)
+        .select('-_id answer comment timestamp')
+        .sort('timestamp')
         .exec(function(err, data) {
-            res.json(data);
+            callback(data);
         });
-});
+};
 
-app.listen(3000);
+//getQuestion(new Date(), "581e6b2b56bf7e3d5b4bccbd", console.log);
+//saveAnswer("581e6b2b56bf7e3d5b4bccbf", "581e6b2b56bf7e3d5b4bccbd", "Yes", "", function() {console.log("Answer saved");});
+getAnswers("581e6b2b56bf7e3d5b4bccbf", "581e6b2b56bf7e3d5b4bccbd", console.log)
