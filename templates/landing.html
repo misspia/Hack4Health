@@ -4,8 +4,9 @@
 			<li class = "welcome-msg">{{message}} </li>
 			<li>
 				<ul class = "note col center">
-					<li>{{questionStatus}} </li>
-					<li ng-if = "questionStatus == 'How are you feeling today?'">
+					<li ng-if = "questionStatus != -1">{{questionStatus}} </li>
+					<li ng-if = "questionStatus == -1"> How are you feeling today? </li>
+					<li ng-if = "questionStatus == 'How are you feeling today?' || questionStatus == -1">
 						<answer-options></answer-options>
 					</li>
 				</ul>

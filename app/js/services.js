@@ -37,7 +37,8 @@ app.factory('landing', function(){
 app.factory('question', function($http){
 	return{
 		status: function(unanswered){
-			if(unanswered == 0){
+			console.log(unanswered);
+			if(unanswered == 0 || unaswered == undefined){
 				return 'How are you feeling today?';
 			} else {
 				return 'You have ' + unanswered + ' unanswered question(s)';

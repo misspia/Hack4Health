@@ -1,5 +1,5 @@
 app.controller('mainCrtl', function($scope, user, question, landing, nav){
-	var unanswered = 0;
+	$scope.questionStatus = -1;
 	user.profile().then(function(response){
 		$scope.profile = response.data[0];
 		$scope.profile.dob = $scope.profile.dob.substring(0, $scope.profile.dob.indexOf('T'));
@@ -7,7 +7,7 @@ app.controller('mainCrtl', function($scope, user, question, landing, nav){
 	});
 
 	$scope.calendar = landing.calendar();
-	$scope.questionStatus = question.status(unanswered);
+	
 	$scope.nav = nav.main();
 	$scope.navState = $scope.nav[2].value;
 	$scope.header = $scope.nav[2].title;
@@ -15,22 +15,31 @@ app.controller('mainCrtl', function($scope, user, question, landing, nav){
 	question.toAnswer().then(function(response){
 		$scope.questionArr = response.data;
 		$scope.qLeft = $scope.questionArr.length;
-		console.log($scope.qLeft);
+		$scope.unanswered = $scope.questionArr.length;
 		$scope.question = $scope.questionArr[0];
 	});
 	$scope.count = 0;
 	$scope.submitAnswer = function(ans){
 		$scope.count ++;
+		if($scope.unanswered == 0){
+			//do nothing
+		} else {
+			$scope.unanswered --;
+		}
+		
+		$scope.questionStatus = question.status($scope.unanswered);
 		if($scope.count < $scope.questionArr.length){
 			$scope.question = $scope.questionArr[$scope.count];
 		} else {
 			$scope.question = 'No more questions';		
 		}
 	}
+
 	$scope.navClick = function(item){
 		$scope.navState = item.value;
 		$scope.header = item.title;
 	}
+
 	$scope.genderSelect = function(gender){
 		$scope.profile.gender = gender;
 	};
@@ -44,7 +53,7 @@ app.controller('mainCrtl', function($scope, user, question, landing, nav){
                     bottom: 50,
                     left: 75
                 },
-                color: ['#a0d468', '#fb6e52'],
+                color: ['#fffef9', '#666d6d'],
                 x: function(d,i) { return i },
                 xAxis: {
                     axisLabel: 'X Axis',
@@ -63,15 +72,8 @@ app.controller('mainCrtl', function($scope, user, question, landing, nav){
                     },
                     showMaxMin: false
                 },
-                y1Axis: {
-                    axisLabel: 'Y1 Axis',
-                    tickFormat: function(d){
-                        return d3.format(',f')(d);
-                    },
-                    axisLabelDistance: 12
-                },
                 y2Axis: {
-                    axisLabel: 'Y2 Axis',
+                    axisLabel: 'Performance',
                     tickFormat: function(d) {
                         return d3.format(',.0f')(d)
                     }
