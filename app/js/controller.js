@@ -18,19 +18,15 @@ app.controller('mainCrtl', function($scope, user, question, landing, nav){
 		$scope.unanswered = $scope.questionArr.length;
 		$scope.question = $scope.questionArr[0];
 	});
-	
+	var unanswered = 0;
 	$scope.submitAnswer = function(ans){
 		$scope.count ++;
-		if($scope.unanswered == 0){
-			//do nothing
-		} else {
-			$scope.unanswered --;
-		}
-		$scope.questionStatus = question.status($scope.unanswered);
 		if($scope.count < $scope.questionArr.length){
 			$scope.question = $scope.questionArr[$scope.count];
+			$scope.questionStatus = question.status($scope.questionArr.length - $scope.count);
 		} else {
-			$scope.question = 'No more questions';		
+			$scope.question = 'No more questions';	
+			$scope.questionStatus = question.status(0);	
 		}
 	}
 
