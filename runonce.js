@@ -32,9 +32,9 @@ q1.text.patient = "Are you happy?";
 q1.text.caregiver = "Is he/she happy?";
 q1.answers.patient = ['Yes', 'No'];
 q1.answers.caregiver = ['Yes', 'No'];
-q1.frequency.Monday.unshift(1);
-q1.frequency.Wednesday.unshift(1);
-q1.frequency.Friday.unshift(1);
+q1.frequency.Monday.unshift(60*9);
+q1.frequency.Wednesday.unshift(60*9);
+q1.frequency.Friday.unshift(60*9);
 q1.frequency.Saturday.unshift(60*22);
 q1.profileType = "Both";
 q1.save();
@@ -45,7 +45,7 @@ q2.text.caregiver = "Did he/she eat lunch?";
 q2.answers.patient = ['Yes', 'No'];
 q2.answers.caregiver = ['Yes', 'No'];
 q2.frequency.Saturday.unshift(60*20);
-q2.frequency.Sunday.unshift(1);
+q2.frequency.Sunday.unshift(60*9);
 q2.profileType = "Both";
 q2.save();
 
@@ -55,7 +55,7 @@ q3.text.caregiver = "Did he/she misplace anything today?";
 q3.answers.patient = ['Yes', 'No'];
 q3.answers.caregiver = ['Yes', 'No'];
 q3.frequency.Saturday.unshift(60*20);
-q3.frequency.Sunday.unshift(1);
+q3.frequency.Sunday.unshift(60*9);
 q3.profileType = "Both";
 q3.save();
 
@@ -65,7 +65,7 @@ q4.text.caregiver = "Did he/she have a good sleep last night?";
 q4.answers.patient = ['Yes', 'No'];
 q4.answers.caregiver = ['Yes', 'No'];
 q4.frequency.Saturday.unshift(60*20);
-q4.frequency.Sunday.unshift(1);
+q4.frequency.Sunday.unshift(60*9);
 q4.profileType = "Both";
 q4.save();
 
@@ -75,7 +75,7 @@ q5.text.caregiver = "Did he/she need help with any basic tasks?";
 q5.answers.patient = ['Yes', 'No'];
 q5.answers.caregiver = ['Yes', 'No'];
 q5.frequency.Saturday.unshift(60*20);
-q5.frequency.Sunday.unshift(1);
+q5.frequency.Sunday.unshift(60*9);
 q5.profileType = "Both";
 q5.save();
 
@@ -83,7 +83,7 @@ var q6 = new models.Question();
 q6.text.patient = "Did you have any lapses in memory today?";
 q6.answers.patient = ['Yes', 'No'];
 q6.frequency.Saturday.unshift(60*20);
-q6.frequency.Sunday.unshift(1);
+q6.frequency.Sunday.unshift(60*9);
 q6.profileType = "Patient";
 q6.save();
 

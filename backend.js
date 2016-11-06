@@ -25,6 +25,14 @@ app.get('/getQuestion/:first/:last', function(req, res) {
     });
 });
 
+app.get('/getAnswers/:first/:last', function(req, res) {
+    var first = req.params.first;
+    var last = req.params.last;
+    models.getAllAnswersByName(first, last, function(data) {
+        res.send(data);
+    });
+});
+
 app.post('/saveAnswer', urlencodedParser, function(req, res) {
     var qid = req.body.qid;
     var userid = req.body.userid;
