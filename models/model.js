@@ -18,7 +18,8 @@ all of the questions asked within the last 60 minutes, up to midnight of the sam
 Response format:
 [{ qID : String, text : String, answers : Mixed }]
 */
-var getQuestion = function(dt, userID, callback) {
+var getQuestion = function(userID, callback) {
+    dt = new Date();
     var dayOfWeek = weekday[dt.getDay()];
     var then = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate(), 0, 0, 0);
     var msSinceMidnight = dt - then.getTime();
@@ -89,6 +90,4 @@ var getAnswers = function(qID, userID, callback) {
         });
 };
 
-//getQuestion(new Date(), "581e6b2b56bf7e3d5b4bccbd", console.log);
-//saveAnswer("581e6b2b56bf7e3d5b4bccbf", "581e6b2b56bf7e3d5b4bccbd", "Yes", "", function() {console.log("Answer saved");});
-getAnswers("581e6b2b56bf7e3d5b4bccbf", "581e6b2b56bf7e3d5b4bccbd", console.log)
+exports.getQuestion = getQuestion;
