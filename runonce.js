@@ -46,8 +46,5 @@ a1.answer = "Yes";
 a1.comment = ""
 a1.timestamp = Date.now();
 a1.save(function(doc) {
-    models.Question.findById(q1._id.toString()).exec(function(err, data) {
-        console.log(data);
-        mongoose.connection.close();
-    });
+    mongoose.connection.close();
 });

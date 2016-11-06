@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var models = require('./schema.js');
+var Schema = mongoose.Schema;
+var ObjectId = Schema.ObjectId;
 
 var weekday = new Array(7);
 weekday[0]=  "Sunday";
@@ -26,6 +28,10 @@ var getQuestion = function(dt, userID, callback) {
     var q;
     models.User.findById(userID).exec(function(err, data) {
         u = data;
+        if (u == null) {
+            callback([]);
+            return;
+        }
         models.Question.find()
             .where('frequency.'.concat(dayOfWeek)).gt(minSinceMidnight - 60).lt(minSinceMidnight)
             .where('profileType').in(['Both', u.profileType])
@@ -51,11 +57,30 @@ var getQuestion = function(dt, userID, callback) {
 };
 
 /*
-Given a qID (String), user (String) and response (String),
-saves the response to the database.
+Given a qID (String), userID (String), response (String) and comment (String),
+saves the response and comment to the database.
 */
-var saveAnswer = function(qID, userID, response) {
-
+var saveAnswer = function(qID, userID, response, comment, callback) {
+    var ans = new models.Answer();
+    ans.questionID = qID;
+    ans.userID = userID;
+    ans.answer = response;
+    ans.comment = comment;
+    ans.timestamp = new Date();
+    ans.save(function() {
+        callback();
+    });
 };
 
-getQuestion(new Date(), "581e657471b0923be368b2f4", console.log);
+/*
+Given a qID (String), userID (String), return a list of
+all saved answers for that question and user.
+Response format:
+[{}]
+*/
+var getAnswers = function(qID, userID, callback) {
+    
+}
+
+getQuestion(new Date(), "581e6b2b56bf7e3d5b4bccbd", console.log);
+saveAnswer("581e6b2b56bf7e3d5b4bccbf", "581e6b2b56bf7e3d5b4bccbd", "Yes", "", function() {console.log("Answer saved");});
