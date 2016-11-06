@@ -2,10 +2,16 @@
   "name": "hackathon",
   "version": "1.0.0",
   "description": "Hack4Health Hackathon",
-  "main": "model.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "express": "^4.14.0",
+    "ionicons-npm": "^2.0.1",
+    "yargs": "^6.3.0"
+  }
 }

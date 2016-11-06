@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css?family=Oxygen');
+@import 'partials/variables';
+@import 'partials/layout';
+
+body{
+	font-family: $font;
+	margin:0;
+	color:$white;
+	overflow:hidden;
+
+}
+#header-container{
+	background-color:$white;
+	color: $gray;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+	.header{
+		display:inline-block;
+		padding:0.5em 0 0.1em 0;
+		letter-spacing:0.1em;
+		font-size:1.5em;
+		font-weight: bolder;
+		letter-spacing:0.2em;
+	}
+	.nav{
+		li{
+			cursor:pointer;
+			padding:0.5em 0.1em;
+			width: 7em; height:3em;
+			text-shadow: 0em 0.1em 0.1em $shadow;
+			i{
+				color:lighten($gray,10%);
+				font-size:2em;
+			}
+		}	
+		.active{
+			border-bottom: solid 0.2em $gray;
+		}	
+	}
+
+}
+#main-container{
+	height:100vh;
+	width:100%;
+}
+.text{
+	text-align:center;
+}
+.female{
+	background-color:$pink;
+}
+.male{
+	background-color: $blue;
+}
+#landing{
+	.date, .time, .welcome-msg{
+	}
+	.date{
+		font-size: 3em;
+	}
+	.time{
+		font-size: 7em;
+	}
+	.welcome-msg{
+		font-size:2.5em;
+	}
+	.note{
+		background-color: $white;
+		margin-top:1em;
+		border-radius: 0.2em;
+		color:lighten($gray, 5%);
+		height:3em;
+	}
+}
+#profile{
+	form{
+		label, input[type=submit]{
+			border-bottom: solid 0.2em $white;
+			margin:0.7em 0;
+		}
+		span{
+			font-size:0.8em;
+		}
+		input{
+			background-color:transparent;
+			color:$white;
+		}
+		input[type = text]{
+			border:none;			
+			font-size:2em;
+			&:active,
+			&:focus {
+				outline:none;
+			}
+		}
+		input[type=submit]{
+			border:solid 0.2em $white;
+			font-size:1.5em;
+			cursor: pointer;
+			&:hover,
+			&:focus {
+				-webkit-animation-name: spaceboots;
+				-webkit-animation-duration: 0.8s;
+				-webkit-transform-origin:50% 50%;
+				-webkit-animation-iteration-count: infinite;
+				-webkit-animation-timing-function: linear;
+			}
+		}
+		.gender{
+			border: none;
+			background-color:transparent;
+			input{
+				width:50%;
+				outline:none;
+				&:focus{
+					animation:none;
+				}
+			}
+		}
+		.gender.male{
+			.active{
+				background-color:$white;
+				color: $blue;	
+			}			
+		}
+		.gender.female{
+			.active{
+					background-color:$white;
+					color: $pink;
+				}	
+		}
+
+	}
+}
+answer-options{
+	i{
+		font-size:2em;
+	}
+	li{
+		transition:all 0.3s;
+		&:hover, &:active{
+			color:$gray;
+		}
+		&:active{
+			animation: icon-click 0.3s linear;
+		}
+	}
+}
+#questions{
+	font-size:2em;
+}
+
+
+
+@-webkit-keyframes icon-click {
+	50%{ -webkit-transform: translateY(0.3em);}
+}
+@-webkit-keyframes spaceboots {
+	0% { -webkit-transform: translate(2px, 1px) rotate(0deg); }
+	10% { -webkit-transform: translate(-1px, -2px) rotate(-1deg); }
+	20% { -webkit-transform: translate(-3px, 0px) rotate(1deg); }
+	30% { -webkit-transform: translate(0px, 2px) rotate(0deg); }
+	40% { -webkit-transform: translate(1px, -1px) rotate(1deg); }
+	50% { -webkit-transform: translate(-1px, 2px) rotate(-1deg); }
+	60% { -webkit-transform: translate(-3px, 1px) rotate(0deg); }
+	70% { -webkit-transform: translate(2px, 1px) rotate(-1deg); }
+	80% { -webkit-transform: translate(-1px, -1px) rotate(1deg); }
+	90% { -webkit-transform: translate(2px, 2px) rotate(0deg); }
+	100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

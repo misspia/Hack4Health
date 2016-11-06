@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html ng-app = "app">
 <head>
-<title>Data Explorer</title>
+	<title>Data Explorer</title>
+	<link rel="stylesheet" type="text/css" href="node_modules/ionicons-npm/css/ionicons.css">
+	<link rel="stylesheet" type="text/css" href="app/css/main.css">
 </head>
-<body>
-
+<body ng-controller="mainCrtl" class = "{{profile.gender}} ">
+<!-- 
 <form method="post">
   Collection:<br>
   <input type="text" name="collection"><br><br>
@@ -13,7 +15,32 @@
   Is Equal To:<br>
   <input type="text" name="value"><br><br>
   <input type="submit" value="Submit">
-</form>
+</form> -->
+	<ul id = "header-container" class = "row center">
 
+		<li class = "col center">
+			<span class = "header row text">{{header | uppercase}} </span>
+			<ul class = "row center nav">
+				<li ng-repeat = "item in nav" class ="col center text" ng-click = "navClick(item)" 
+					ng-class = "{active: navState== {{item.value}} }">
+					<i class = "icon {{item.icon}}"></i>
+				</li>
+			</ul>
+		</li>	
+	</ul>
+	<ul id = "main-container" class = "col center">
+		<ng-include ng-show = "navState == 0" src="'templates/landing.html'" id = "landing" class = "row center"></ng-include>
+		<ng-include ng-show = "navState == 1" src="'templates/questions.html'" id = "questions" class = "row center"></ng-include>
+		<ng-include ng-show = "navState == 2" src="'templates/dashboard.html'" id = "dashboard" class = "row center"></ng-include>
+		<ng-include ng-show = "navState == 3" src="'templates/profile.html'" id = "profile" class = "row center"></ng-include>
+	</ul>
 </body>
+	<script type="text/javascript" src = "node_modules/angular/angular.js"></script>
+	<script type="text/javascript" src = "app/js/app.js"></script>
+	<script type="text/javascript" src = "app/js/controller.js"></script>
+	<script type="text/javascript" src = "app/js/services.js"></script>
+	<script type="text/javascript" src = "app/js/directives.js"></script>
+
+
 </html>
+

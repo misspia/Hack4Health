@@ -1,0 +1,30 @@
+.row, .col{
+	display:flex;
+	flex-wrap: wrap;
+}
+.row{flex-direction:row;}
+.col{flex-direction:column;}
+
+///////////////Justify Content///////////////
+.center{justify-content:center;}
+.flex-end{justify-content:flex-end;}
+.flex-start{justify-content:flex-start;}
+.space-around{justify-content:space-around;}
+.space-between{justify-content:space-between;}
+
+///////////////Align Items///////////////
+.align-center{align-items:center;}
+.align-start{align-items:flex-start;}
+.align-end{align-items:flex-end;}
+.align-stretch{align-items:stretch;}
+.align-base{align-items:baseline;}
+
+/////////Clear List Properties//////////
+li{
+	padding:0;
+}
+ul{
+	list-style:none; 
+	padding:0;
+	margin:0;
+}

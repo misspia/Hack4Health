@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css?family=Oxygen");
+.row, .col {
+  display: flex;
+  flex-wrap: wrap; }
+
+.row {
+  flex-direction: row; }
+
+.col {
+  flex-direction: column; }
+
+.center {
+  justify-content: center; }
+
+.flex-end {
+  justify-content: flex-end; }
+
+.flex-start {
+  justify-content: flex-start; }
+
+.space-around {
+  justify-content: space-around; }
+
+.space-between {
+  justify-content: space-between; }
+
+.align-center {
+  align-items: center; }
+
+.align-start {
+  align-items: flex-start; }
+
+.align-end {
+  align-items: flex-end; }
+
+.align-stretch {
+  align-items: stretch; }
+
+.align-base {
+  align-items: baseline; }
+
+li {
+  padding: 0; }
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+
+body {
+  font-family: "Oxygen", sans-serif;
+  margin: 0;
+  color: #fff;
+  overflow: hidden; }
+
+#header-container {
+  background-color: #fff;
+  color: #3f3f3f;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
+  #header-container .header {
+    display: inline-block;
+    padding: 0.5em 0 0.1em 0;
+    letter-spacing: 0.1em;
+    font-size: 1.5em;
+    font-weight: bolder;
+    letter-spacing: 0.2em; }
+  #header-container .nav li {
+    cursor: pointer;
+    padding: 0.5em 0.1em;
+    width: 7em;
+    height: 3em;
+    text-shadow: 0em 0.1em 0.1em #c3bfbf; }
+    #header-container .nav li i {
+      color: #595959;
+      font-size: 2em; }
+  #header-container .nav .active {
+    border-bottom: solid 0.2em #3f3f3f; }
+
+#main-container {
+  height: 100vh;
+  width: 100%; }
+
+.text {
+  text-align: center; }
+
+.female {
+  background-color: #ef2d5e; }
+
+.male {
+  background-color: #3a99d8; }
+
+#landing .date {
+  font-size: 3em; }
+#landing .time {
+  font-size: 7em; }
+#landing .welcome-msg {
+  font-size: 2.5em; }
+#landing .note {
+  background-color: #fff;
+  margin-top: 1em;
+  border-radius: 0.2em;
+  color: #4c4c4c;
+  height: 3em; }
+
+#profile form label, #profile form input[type=submit] {
+  border-bottom: solid 0.2em #fff;
+  margin: 0.7em 0; }
+#profile form span {
+  font-size: 0.8em; }
+#profile form input {
+  background-color: transparent;
+  color: #fff; }
+#profile form input[type=text] {
+  border: none;
+  font-size: 2em; }
+  #profile form input[type=text]:active, #profile form input[type=text]:focus {
+    outline: none; }
+#profile form input[type=submit] {
+  border: solid 0.2em #fff;
+  font-size: 1.5em;
+  cursor: pointer; }
+  #profile form input[type=submit]:hover, #profile form input[type=submit]:focus {
+    -webkit-animation-name: spaceboots;
+    -webkit-animation-duration: 0.8s;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear; }
+#profile form .gender {
+  border: none;
+  background-color: transparent; }
+  #profile form .gender input {
+    width: 50%;
+    outline: none; }
+    #profile form .gender input:focus {
+      animation: none; }
+#profile form .gender.male .active {
+  background-color: #fff;
+  color: #3a99d8; }
+#profile form .gender.female .active {
+  background-color: #fff;
+  color: #ef2d5e; }
+
+answer-options i {
+  font-size: 2em; }
+answer-options li {
+  transition: all 0.3s; }
+  answer-options li:hover, answer-options li:active {
+    color: #3f3f3f; }
+  answer-options li:active {
+    animation: icon-click 0.3s linear; }
+
+#questions {
+  font-size: 2em; }
+
+@-webkit-keyframes icon-click {
+  50% {
+    -webkit-transform: translateY(0.3em); } }
+@-webkit-keyframes spaceboots {
+  0% {
+    -webkit-transform: translate(2px, 1px) rotate(0deg); }
+  10% {
+    -webkit-transform: translate(-1px, -2px) rotate(-1deg); }
+  20% {
+    -webkit-transform: translate(-3px, 0px) rotate(1deg); }
+  30% {
+    -webkit-transform: translate(0px, 2px) rotate(0deg); }
+  40% {
+    -webkit-transform: translate(1px, -1px) rotate(1deg); }
+  50% {
+    -webkit-transform: translate(-1px, 2px) rotate(-1deg); }
+  60% {
+    -webkit-transform: translate(-3px, 1px) rotate(0deg); }
+  70% {
+    -webkit-transform: translate(2px, 1px) rotate(-1deg); }
+  80% {
+    -webkit-transform: translate(-1px, -1px) rotate(1deg); }
+  90% {
+    -webkit-transform: translate(2px, 2px) rotate(0deg); }
+  100% {
+    -webkit-transform: translate(1px, -2px) rotate(-1deg); } }
+
+/*# sourceMappingURL=main.css.map */

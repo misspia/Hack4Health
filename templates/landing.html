@@ -1,0 +1,15 @@
+		<ul class = "col center text">
+			<li class = "date">{{calendar.date}} </li>
+			<li class = "time">{{calendar.time}} </li>		
+			<li class = "welcome-msg">{{message}} </li>
+			<li>
+				<ul class = "note col center">
+					<li>{{questionStatus}} </li>
+					<li ng-if = "questionStatus == 'How are you feeling today?'">
+						<answer-options></answer-options>
+					</li>
+				</ul>
+			</li>
+		</ul>
+
+		
