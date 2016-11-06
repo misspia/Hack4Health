@@ -1,21 +1,12 @@
 <!DOCTYPE html>
 <html ng-app = "app">
 <head>
-	<title>Data Explorer</title>
+	<meta name="viewport" content="width=device-width" />
+	<title>21 Questions</title>
 	<link rel="stylesheet" type="text/css" href="node_modules/ionicons-npm/css/ionicons.css">
 	<link rel="stylesheet" type="text/css" href="app/css/main.css">
 </head>
-<body ng-controller="mainCrtl" class = "{{profile.gender}} ">
-<!-- 
-<form method="post">
-  Collection:<br>
-  <input type="text" name="collection"><br><br>
-  Field:<br>
-  <input type="text" name="field"><br><br>
-  Is Equal To:<br>
-  <input type="text" name="value"><br><br>
-  <input type="submit" value="Submit">
-</form> -->
+<body ng-controller="mainCrtl" class = "{{profile.gender | lowercase}} ">
 	<ul id = "header-container" class = "row center">
 
 		<li class = "col center">

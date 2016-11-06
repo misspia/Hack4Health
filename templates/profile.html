@@ -1,13 +1,23 @@
 <form class = "col center">
-	<label ng-repeat="(key, value) in profile" ng-if = "key != 'gender'" class = "col center">
-		<span> {{key | uppercase}}</span>
-		<input type="text" ng-model="value">
+	<label class = "col center">
+		<span> FIRST NAME</span>
+		<input type="text" ng-model="profile.firstName">
+	</label>
+	<label class = "col center">
+		<span> LAST NAME</span>
+		<input type="text" ng-model="profile.lastName">
+	</label>
+	<label class = "col center">
+		<span> DOB</span>
+		<input type="text" ng-model="profile.dob">
+	</label>
+	<label class = "col center">
+		<span> TYPE</span>
+		<input type="text" ng-model="profile.profileType">
 	</label>
 	<label class = "row center gender {{profile.gender}} ">
 		<input type="submit" value = "Male" ng-click="genderSelect('male')" ng-class = "{active: profile.gender == 'male'} " >
 		<input type="submit" value = "Female" ng-click="genderSelect('female')" ng-class = "{active: profile.gender == 'female'}" >
 	</label>
-
-	<!-- {{profile}} -->
-	<input type="submit" value = "edit">
+	<input class = "last" type="submit" value = "edit">
 </form>

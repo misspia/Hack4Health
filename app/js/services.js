@@ -3,7 +3,7 @@ app.factory('nav', function(){
 		main: function(){
 			nav = [
 				{title:'home', value: 0, icon: 'ion-android-home'},
-				{title:'questions', value: 1, icon: 'ion-help'},
+				{title:'questions', value: 1, icon: 'ion-ios-bell'},
 				{title:'dashboard', value: 2, icon:'ion-arrow-graph-up-right'},
 				{title:'profile', value: 3, icon: 'ion-android-person'}
 			];
@@ -11,19 +11,14 @@ app.factory('nav', function(){
 		}
 	};
 });
-app.factory('user', function(){
+app.factory('user', function($http){
 	return{
 		profile: function(){
-			profile = {
-				name: 'Karchie',
-				dob: '01/01/2000',
-				gender: 'female'
-			}
-			return profile;
+			return $http.get('http://localhost:3000/users');
 		}
 	};
 });
-app.factory('question', function(){
+app.factory('question', function($http){
 	return{
 		status: function(unanswered){
 			if(unanswered == 0){
@@ -33,10 +28,9 @@ app.factory('question', function(){
 			}
 		},
 		toAnswer: function(){
-			question = "Did you sleep well?";
-			return question;
-		}
+			return $http.get('http://localhost:3000/getQuestion/John/Doe');
 
+		}
 	};
 });
 app.factory('landing', function(){

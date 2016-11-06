@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Oxygen");
+@import url("https://fonts.googleapis.com/css?family=Rubik");
 .row, .col {
   display: flex;
   flex-wrap: wrap; }
@@ -51,7 +52,8 @@ body {
   font-family: "Oxygen", sans-serif;
   margin: 0;
   color: #fff;
-  overflow: hidden; }
+  overflow: hidden;
+  transition: all 0.3s; }
 
 #header-container {
   background-color: #fff;
@@ -63,7 +65,8 @@ body {
     letter-spacing: 0.1em;
     font-size: 1.5em;
     font-weight: bolder;
-    letter-spacing: 0.2em; }
+    letter-spacing: 0.2em;
+    font-family: 'Rubik', sans-serif; }
   #header-container .nav li {
     cursor: pointer;
     padding: 0.5em 0.1em;
@@ -143,7 +146,8 @@ body {
 answer-options i {
   font-size: 2em; }
 answer-options li {
-  transition: all 0.3s; }
+  transition: all 0.3s;
+  margin: 0 1em; }
   answer-options li:hover, answer-options li:active {
     color: #3f3f3f; }
   answer-options li:active {
@@ -178,5 +182,23 @@ answer-options li {
     -webkit-transform: translate(2px, 2px) rotate(0deg); }
   100% {
     -webkit-transform: translate(1px, -2px) rotate(-1deg); } }
+@media only screen and (max-width: 700px) {
+  .header {
+    font-size: 3.5em; }
+
+  #header-container .nav li {
+    width: 4.5em; }
+
+  #landing .date {
+    font-size: 2.5em; }
+  #landing .time {
+    font-size: 6em; }
+  #landing .welcome-msg {
+    font-size: 1.9em; }
+
+  #profile form label, #profile form input[type=submit] {
+    margin: 0.4em 0; }
+  #profile form {
+    margin-bottom: 5em; } }
 
 /*# sourceMappingURL=main.css.map */

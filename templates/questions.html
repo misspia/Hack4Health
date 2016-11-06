@@ -1,4 +1,8 @@
 <ul class = "col center text">
-	<li>{{question}} </li>
+	<li >{{question.text}} </li>
 	<answer-options></answer-options>
 </ul>
+<ul ng-if = "qLeft == count " class = "col center text">
+	<li ng-if = "qLeft < count "> No questions left</li>
+</ul>
+<!-- ng-if = "qLeft > count "  -->
