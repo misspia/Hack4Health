@@ -26,12 +26,11 @@ app.factory('landing', function(){
 		}, 
 		calendar: function(){
 			calendar = {
-				date: 'November 5, 2016', 
-				time: '1:30 PM'
+				date: 'November 6, 2016', 
+				time: '12:30 PM'
 			}
 			return calendar;
 		}
-
 	};
 });
 app.factory('question', function($http){

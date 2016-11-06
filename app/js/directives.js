@@ -6,3 +6,11 @@ app.directive('answerOptions', function(){
 				</ul>`
 	};
 });
+app.directive('answerOptionsLanding', function(){
+	return {
+		template:`<ul class = "answers row center">
+					<li><i class = "icon ion-happy-outline"></i></li>
+					<li><i class = "icon ion-sad-outline"></i></li>
+				</ul>`
+	};
+});
