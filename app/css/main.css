@@ -143,14 +143,19 @@ body {
   background-color: #fff;
   color: #ef2d5e; }
 
-answer-options i {
+answer-options i,
+answer-options-landing i {
   font-size: 2em; }
-answer-options li {
+answer-options li,
+answer-options-landing li {
   transition: all 0.3s;
   margin: 0 1em; }
-  answer-options li:hover, answer-options li:active {
+  answer-options li:hover, answer-options li:active,
+  answer-options-landing li:hover,
+  answer-options-landing li:active {
     color: #3f3f3f; }
-  answer-options li:active {
+  answer-options li:active,
+  answer-options-landing li:active {
     animation: icon-click 0.3s linear; }
 
 #questions {
@@ -202,5 +207,13 @@ answer-options li {
     margin-bottom: 5em; } }
 .nvd3 .nv-axis line {
   stroke: transparent !important; }
+
+g.nv-group.nv-series-0,
+g.nv-group.nv-series-1 {
+  stroke-width: 3px !important; }
+
+.nvd3 .nv-axis path {
+  stroke-width: 2px !important;
+  opacity: 1 !important; }
 
 /*# sourceMappingURL=main.css.map */
