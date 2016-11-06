@@ -34,7 +34,7 @@ var getQuestion = function(userID, callback) {
             return;
         }
         models.Question.find()
-            .where('frequency.'.concat(dayOfWeek)).gt(minSinceMidnight - 60).lt(minSinceMidnight)
+            .where('frequency.'.concat(dayOfWeek)).gt(minSinceMidnight - 600).lt(minSinceMidnight)
             .where('profileType').in(['Both', u.profileType])
             .select('_id text answers')
             .exec(function(err, data) {

@@ -30,14 +30,34 @@ u2.save();
 var q1 = new models.Question();
 q1.text.patient = "Are you happy?";
 q1.text.caregiver = "Is he/she happy?";
-q1.answers.patient = ['Yes', 'No']
-q1.answers.caregiver = ['Yes', 'No']
+q1.answers.patient = ['Yes', 'No'];
+q1.answers.caregiver = ['Yes', 'No'];
 q1.frequency.Monday.unshift(60*9);
 q1.frequency.Wednesday.unshift(60*9);
 q1.frequency.Friday.unshift(60*9);
 q1.frequency.Saturday.unshift(60*22);
 q1.profileType = "Both";
 q1.save();
+
+var q2 = new models.Question();
+q2.text.patient = "Did you eat lunch?";
+q2.text.caregiver = "Did he/she eat lunch?";
+q2.answers.patient = ['Yes', 'No'];
+q2.answers.caregiver = ['Yes', 'No'];
+q2.frequency.Saturday.unshift(60*20);
+q2.frequency.Sunday.unshift(60*9);
+q2.profileType = "Both";
+q2.save();
+
+var q3 = new models.Question();
+q3.text.patient = "Did you misplace anything today?";
+q3.text.caregiver = "Did he/she misplace anything today?";
+q3.answers.patient = ['Yes', 'No'];
+q3.answers.caregiver = ['Yes', 'No'];
+q3.frequency.Saturday.unshift(60*20);
+q3.frequency.Sunday.unshift(60*9);
+q3.profileType = "Both";
+q3.save();
 
 var a1 = new models.Answer();
 a1.questionID = q1._id;
