@@ -7,7 +7,7 @@ app.controller('mainCrtl', function($scope, user, question, landing, nav){
 	$scope.header = $scope.nav[2].title;
 	
 	user.profile().then(function(response){
-		$scope.profile = response.data[0];
+		$scope.profile = response.data[1];
 		$scope.profile.dob = $scope.profile.dob.substring(0, $scope.profile.dob.indexOf('T'));
 		$scope.message = landing.msg($scope.profile.firstName);
 	});
